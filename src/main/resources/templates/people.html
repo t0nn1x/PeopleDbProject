@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>People</title>
   </head>
   <body>
-    <h2>Here are some people:</h2>
-    <ol>
-      <li th:each="person : ${people}" th:text="${person}"></li>
-    </ol>
+
+    <div class="col-8 mx-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">First Name</th>
+              <th scope="col">DOB</th>
+              <th scope="col">Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="person : ${people}">
+              <th scope="row" th:text="${person.id}"></th>
+              <td th:text="${person.firstName}"></td>
+              <td th:text="${person.lastName}"></td>
+              <td th:text="${person.dob}"></td>
+              <td th:text="${person.salary}"></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
   </body>
 </html>
