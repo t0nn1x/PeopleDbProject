@@ -15,30 +15,62 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>People</title>
+    <style>
+      body {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+      }
+
+      .table {
+        background-color: #2e2e2e;
+        color: #d4d4d4;
+      }
+
+      .table th {
+        background-color: #2e2e2e;
+        color: #d4d4d4;
+      }
+
+      .table td {
+        background-color: #2e2e2e;
+        color: #d4d4d4;
+      }
+
+      .table tr {
+        background-color: #2e2e2e;
+        color: #d4d4d4;
+      }
+
+      .table tr:hover {
+        background-color: #3e3e3e;
+        color: #d4d4d4;
+      }
+
+      
+    </style>
   </head>
   <body>
-
-    <div class="col-8 mx-auto">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">First Name</th>
-              <th scope="col">DOB</th>
-              <th scope="col">Salary</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr th:each="person : ${people}">
-              <th scope="row" th:text="${person.id}"></th>
-              <td th:text="${person.firstName}"></td>
-              <td th:text="${person.lastName}"></td>
-              <td th:text="${person.dob}"></td>
-              <td th:text="${person.salary}"></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">First Name</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Salary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="person : ${people}">
+            <th scope="row" th:text="${person.id}"></th>
+            <td th:text="${person.firstName}"></td>
+            <td th:text="${person.lastName}"></td>
+            <td th:text="${{person.dob}}"></td>
+            <td th:text="${{person.salary}}"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </body>
 </html>
