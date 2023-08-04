@@ -23,6 +23,8 @@ public class Person {
 
     private String lastName;
 
+    private String email;
+
     private LocalDate dob;
     
     private BigDecimal salary;
