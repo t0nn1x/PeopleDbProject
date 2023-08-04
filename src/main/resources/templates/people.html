@@ -18,7 +18,7 @@
   </head>
   <body>
     <div class="col-8 mx-auto">
-      <table class="table">
+      <table class="table table-bordered table-sm">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -30,11 +30,14 @@
           </tr>
         </thead>
         <tbody>
+          <tr th:if="${#lists.isEmpty(people)}">
+            <td colspan="6" class="text-center">No Data</td>
+          </tr>
           <tr th:each="person : ${people}">
             <th scope="row" th:text="${person.id}"></th>
             <td th:text="${person.firstName}"></td>
             <td th:text="${person.lastName}"></td>
-            <td th:text="${{person.email}}"></td>
+            <td th:text="${person.email}"></td>
             <td th:text="${{person.dob}}"></td>
             <td th:text="${{person.salary}}"></td>
           </tr>
