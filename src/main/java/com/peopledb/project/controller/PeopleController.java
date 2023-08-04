@@ -3,6 +3,7 @@ package com.peopledb.project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.peopledb.project.model.Person;
 import com.peopledb.project.repository.PersonRepository;
 
+import jakarta.validation.Valid;
 import lombok.Data;
 
 @Data
@@ -31,19 +33,21 @@ public class PeopleController {
     }
 
     @GetMapping
-    public String showPeoplePage(Model model){
+    public String showPeoplePage(Model model) {
         return "people";
     }
 
     @ModelAttribute
-    public Person getPerson(){
+    public Person getPerson() {
         return new Person();
     }
 
     @PostMapping
-    public String savePerson(Person person){
-        System.out.println(person);
-        personRepository.save(person);
-        return "redirect:people";
+    public String savePerson(@Valid Person person, Errors errors){
+        if (!errors.hasErrors()) {
+            personRepository.save(person);
+            return "redirect:people";
+        } 
+        return "people";
     }
 }
