@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.peopledb.project.model.Person;
 
-@Component
+// @Component
 public class PersonDataLoader implements ApplicationRunner {
 
     private PersonRepository personRepository;
