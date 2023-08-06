@@ -19,7 +19,7 @@
   <body>
     <div class="col-10 col-sm-11 mx-auto my-5">
       <h2>People List</h2>
-      <form method="post" >
+      <form method="post">
         <table class="table table-bordered table-sm">
           <thead>
             <tr>
@@ -37,17 +37,45 @@
               <td colspan="6" class="text-center">No Data</td>
             </tr>
             <tr th:each="person : ${people}">
-              <td><input class="form-check-input" type="checkbox" name="selections" th:value="${person.id}"></td>
+              <td>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="selections"
+                  th:value="${person.id}"
+                />
+              </td>
               <th scope="row" th:text="${person.id}"></th>
               <td th:text="${person.firstName}"></td>
               <td th:text="${person.lastName}"></td>
-              <td th:text="${person.email}" class="d-sm-none d-md-table-cell"></td>
+              <td
+                th:text="${person.email}"
+                class="d-sm-none d-md-table-cell"
+              ></td>
               <td th:text="${{person.dob}}"></td>
               <td th:text="${{person.salary}}"></td>
             </tr>
           </tbody>
         </table>
-        <button type="submit" name="delete" value="true" class="btn btn-danger mb-5">Delete</button>
+        <button
+          type="submit"
+          name="delete"
+          value="true"
+          class="btn btn-danger mb-5"
+          onclick="confirmDelete()"
+        >
+          Delete
+        </button>
+
+        <script>
+          function confirmDelete() {
+            if (
+              confirm("Are you sure you want to delete the selected person(s)?")
+            ) {
+              document.forms[0].submit();
+            }
+          }
+        </script>
       </form>
 
       <form th:object="${person}" method="post" novalidate>
@@ -99,11 +127,7 @@
             th:errorclass="is-invalid"
             aria-describedby="dobHelp"
           />
-          <div
-            id="validationDob"
-            class="invalid-feedback"
-            th:errors="*{dob}"
-          >
+          <div id="validationDob" class="invalid-feedback" th:errors="*{dob}">
             Please choose a username.
           </div>
         </div>
