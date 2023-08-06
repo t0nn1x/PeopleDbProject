@@ -52,7 +52,7 @@
                 th:text="${person.email}"
                 class="d-sm-none d-md-table-cell"
               ></td>
-              <td th:text="${{person.dob}}"></td>
+              <td th:text="${#temporals.format(person.dob, 'MMMM dd, yyyy')}"></td>
               <td th:text="${{person.salary}}"></td>
             </tr>
           </tbody>
