@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LocalDateFormatter implements Formatter<LocalDate>{
 
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
     @Override
     public String print(LocalDate object, Locale locale) {
@@ -20,7 +20,7 @@ public class LocalDateFormatter implements Formatter<LocalDate>{
 
     @Override
     public LocalDate parse(String text, Locale locale) throws ParseException {
-        return LocalDate.parse(text, DateTimeFormatter.ISO_LOCAL_DATE);
+        return LocalDate.parse(text, dateTimeFormatter);
     }
     
 }
