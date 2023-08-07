@@ -41,4 +41,6 @@ public class Person {
     @DecimalMin(value = "1000.00", message = "Salary must be at least 1000")
     @NotNull(message = "Salary cannot be empty")
     private BigDecimal salary;
+
+    private String photoFilename;
 }
